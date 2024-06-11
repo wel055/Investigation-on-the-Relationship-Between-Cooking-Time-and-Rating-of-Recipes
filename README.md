@@ -80,13 +80,14 @@ To make our analysis of the dataset more efficient and convenient, we conducted 
 
    - Each recipe can receive multiple ratings from different users. By calculating the average rating for each recipe, we obtain a more comprehensive and reliable measure of its overall quality. This approach smooths out individual biases and provides a clearer picture of how well the recipe is generally received.
 
-1. Convert cooking time from int to float, then find the average cooking time per recipe, and merge this data back into the recipes dataset.
+1. Add column `average_minutes` containing average preperation time per recipe.
 
    - First, the cooking time ('minutes' column) is converted from integer to float to ensure consistency in data types. Next, the average cooking time per recipe is calculated, generating a Series where each entry represents the mean cooking time for a specific recipe. This Series is then renamed to 'average_minutes' and merged back into the original dataset.
    - By averaging the cooking times, we gain a more accurate and comprehensive understanding of the typical preparation duration for each recipe, accommodating variations in reported times and smoothing out any anomalies.
 
 1. Add `above_50min` indicating whether the average preparation time is above 50 minutes.
 
-   - The column `above_50min` is a boolean field that checks if the average preparation time ('average_minutes') for each recipe exceeds 50 minutes. This step categorizes the recipes into two groups:recipes that are quick to prepare and those that require more time. This classification allows us to analyze and compare the ratings of recipes based on their preparation time, providing insights into whether longer or shorter cooking times have an impact on user ratings.
+   - The column `above_50min` is a boolean field that checks if the average preparation time ('average_minutes') for each recipe exceeds 50 minutes. This step categorizes the recipes into two groups: recipes that are quick to prepare just under one hour and those that require more time. This classification allows us to analyze and compare the ratings of recipes based on their preparation time, providing insights into whether longer or shorter cooking times have an impact on user ratings.
+   - We decided on the threshold since 50 min is just below 1 hour which is a good indicator of whether the entire cooking process will be under one hour. When we excluded the outliers and plot the distribution of `average_minutes`, we saw that approximately half of the recipe was under 50 min and half of the recipe was over 50 min (see Univariant analysis). Overall, 160036 recipes have preperation time over 50 min and 74392 recipes have preperation time under 50 min.
 
 
