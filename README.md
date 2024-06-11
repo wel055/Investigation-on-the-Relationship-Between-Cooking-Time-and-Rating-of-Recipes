@@ -39,9 +39,7 @@ The dataset `interactions`, contains 731,927 rows, each representing a user inte
 | `'rating'`    | Rating given        |
 | `'review'`    | Review text         |
 
-**Given the datasets, we are investigating whether people rate sugary recipes and the non-sugary recipes on the same scale.** To facilitate the investigation of our question, we separated the values in the `'nutrition'` columns into the corresponding columns,`'calories (#)'`, `'total fat (PDV)'`, `'sugar (PDV)'`, etc. PDV, or percent daily value shows how much a nutrient in a serving of food contributes to a total daily diet. Moreover, we calculated the proportion of sugar in terms of calories out of the total calories of a given recipe and stored the information in a new column, `'prop_sugar'`. because sugary in here will be referring to the recipes with value `'prop_sugar'` higher than the average `'prop_sugar'`. The most relevant columns to answer our question are `'calories(#)'`, `'sugar (PDV)'`, `'prop_sugar'`, described above, `'rating'`, which is the rating that user gave on a recipe, and `'average rating'`, which are the average of the ratings on each unique recipes.
-
-By seeking an answer to our question, we would have an insight on people’s preference on sugary recipes, which could help contributors on Food.com revise and improve their recipes to align with the public’s interests. In addition, the new pieces of information could lead to future work on diving deeper into how much awareness people have on the negative health effects of sweets.
+**Given the datasets, we are investigating whether people rate recipes that take less than 50 minutes to prepare and those that take over 50 minutes to prepare on the same scale. To facilitate the investigation of our question, we performed several data cleaning steps and transformations:
 
 ## Data Cleaning and Exploratory Data Analysis
 
@@ -87,12 +85,8 @@ To make our analysis of the dataset more efficient and convenient, we conducted 
    - First, the cooking time ('minutes' column) is converted from integer to float to ensure consistency in data types. Next, the average cooking time per recipe is calculated, generating a Series where each entry represents the mean cooking time for a specific recipe. This Series is then renamed to 'average_minutes' and merged back into the original dataset.
    - By averaging the cooking times, we gain a more accurate and comprehensive understanding of the typical preparation duration for each recipe, accommodating variations in reported times and smoothing out any anomalies.
 
-1. Convert submitted and date to datetime.
+1. Add `above_50min` indicating whether the average preparation time is above 50 minutes.
 
-   - These two columns are both stored as objects initially, so we converted them into datetime to allow us conduct analysis on trends over time if needed.
-
-1. Add `above_50min` indicating whether the average cooking time is above 50 minutes.
-
-   - The column `above_50min` is a boolean field that checks if the average cooking time ('average_minutes') for each recipe exceeds 50 minutes. This step categorizes the recipes into two groups: those that take more than 50 minutes to prepare and those that take less. This classification allows us to analyze and compare the ratings of recipes based on their preparation time, providing insights into whether longer or shorter cooking times have an impact on user ratings.
+   - The column `above_50min` is a boolean field that checks if the average preparation time ('average_minutes') for each recipe exceeds 50 minutes. This step categorizes the recipes into two groups:recipes that are quick to prepare and those that require more time. This classification allows us to analyze and compare the ratings of recipes based on their preparation time, providing insights into whether longer or shorter cooking times have an impact on user ratings.
 
 
