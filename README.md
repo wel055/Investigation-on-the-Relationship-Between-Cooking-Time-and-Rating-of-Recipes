@@ -80,6 +80,10 @@ To make our analysis of the dataset more efficient and convenient, we conducted 
 
    - Each recipe can receive multiple ratings from different users. By calculating the average rating for each recipe, we obtain a more comprehensive and reliable measure of its overall quality. This approach smooths out individual biases and provides a clearer picture of how well the recipe is generally received.
 
+1. Convert submitted and date to datetime.
+
+   - These two columns are both stored as objects initially, so we converted them into datetime to allow us conduct analysis on trends over time if needed.
+
 1. Add column `average_minutes` containing average preperation time per recipe.
 
    - First, the cooking time ('minutes' column) is converted from integer to float to ensure consistency in data types. Next, the average cooking time per recipe is calculated, generating a Series where each entry represents the mean cooking time for a specific recipe. This Series is then renamed to 'average_minutes' and merged back into the original dataset.
@@ -89,6 +93,7 @@ To make our analysis of the dataset more efficient and convenient, we conducted 
 
    - The column `above_50min` is a boolean field that checks if the average preparation time ('average_minutes') for each recipe exceeds 50 minutes. This step categorizes the recipes into two groups: recipes that are quick to prepare just under one hour and those that require more time. This classification allows us to analyze and compare the ratings of recipes based on their preparation time, providing insights into whether longer or shorter cooking times have an impact on user ratings.
    - We decided on the threshold since 50 min is just below 1 hour which is a good indicator of whether the entire cooking process will be under one hour. When we excluded the outliers and plot the distribution of `average_minutes`, we saw that approximately half of the recipe was under 50 min and half of the recipe was over 50 min (see Univariant analysis). Overall, 160036 recipes have preperation time over 50 min and 74392 recipes have preperation time under 50 min.
+
 
 #### Result
 Here are all the columns of the cleaned df.
@@ -116,15 +121,16 @@ Here are all the columns of the cleaned df.
 | `'average_minutes'`     | float64        |
 | `'above_50min'`         | bool           |
 
-Our cleaned dataframe ended up with 234429 rows and 20 columns. Here are the first 5 rows of ~unique recipes of our cleaned dataframe for illustration. Since there is a lot of columns for the merged dataframe, we selected the columns that are most relevant to our questions for display. Scroll right to view more columns.
+Our cleaned dataframe ended up with 234429 rows and 20 columns. Here are the first 5 rows of ~unique recipes of our cleaned dataframe for illustration. Since there is a lot of columns for the merged dataframe, we selected the columns that are most relevant to our questions for display.
 
 | name                                 |     id |   minutes | submitted           |   rating |   average rating | average_minutes| above_50min  |
 |:-------------------------------------|-------:|----------:|:--------------------|---------:|-----------------:|---------------:|:-------------|
 | 1 brownies in the world    best ever | 333281 |        40 | 2008-10-27 00:00:00 |        4 |              4.0 |           40.0 | False        |
 | 1 in canada chocolate chip cookies   | 453467 |        45 | 2011-04-11 00:00:00 |        5 |              5.0 |           45.0 | False        |
 | 412 broccoli casserole               | 306168 |        40 | 2008-05-30 00:00:00 |        5 |              5.0 |           40.0 | False        |
-| millionaire pound cake               | 286009 |       120 | 2008-02-12 00:00:00 |        5 |              5.0 |           40.0 | False        |
-| 2000 meatloaf                        | 475785 |        90 | 2012-03-06 00:00:00 |        5 |              5.0 |           40.0 | False        |
+| millionaire pound cake               | 286009 |       120 | 2008-02-12 00:00:00 |        5 |              5.0 |          120.0 | True         |
+| 2000 meatloaf                        | 475785 |        90 | 2012-03-06 00:00:00 |        5 |              5.0 |           90.0 | True         |
+
 
 
 ### Univariate Analysis
