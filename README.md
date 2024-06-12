@@ -136,8 +136,29 @@ Our cleaned dataframe ended up with 234429 rows and 20 columns. Here are the fir
 ### Univariate Analysis
 #### Problem Identification 
 Prediction problem:  Predict the rating of recipes using multiclass classification.
+
 Response variable: Rating. When people choose recipes, they usually select based on ratings because it's the easiest way to visualize. 
+
 Metrics: accuracy because accuracy consideres all errors equally, in this study, false positive and false negative contributes equally to the prediction.
+
 Features: number of ingredients, minutes were quantitative values used in this study. Recipes with more ingredients may contribute to better taste and taking less time to cook save time in cooking which should result in high rating 
 
+#### Baseline Model 
+The model used is random forrest classfication. Two quantitative features are used, n_ingredients and minutes. 
+The features were used directly without any feature engineering on the two features. The data was splited into two set, the traning set and the test set, and was fit using a random forrest calssifier. The accuracy of our model is 0.72. The model is relatively good because the model had relative high accuracy over the test set. 
 
+#### Final Model
+New features: tags and nutrition. They provided more detailed information on recipes. 
+Tags: provided important description such as if the recipe is more suiteble for dinner or lunch, siteble for how many people to eat, how expensive is the food, what ocaasion. These information may contributes to the rating of food as people would usually rate high on food the environment. 
+Nutrition: The rating of the recipies often depends on how healthy the recipie is, so calories may contribues to the rating 
+These features improved the model because they provides critical information relating to the rating of the receipes. People rating receipies often depends on the environemnt and the recipe itself. For example, if the recipe is ocassional, the recipe may receive higher rating. If the recipe is very healthy with low calories, it can recive higher rating as well. 
+The hyperparameters peforms the best with max depth of 10, minium sample leaf of 1,and minimum sample split of 2. 
+
+#### Fairness Analysis 
+Group X: cooking minutes under 50 minutes 
+Group Y: cooking minutes above 50 minutes 
+Evaluation metric: percision 
+Null hypothesis: the model performs the same on predicting the rating for cooking time under 50 minutes and above 50 minutes, the model is fair. 
+Alternative hypothesis: the model performs significantly different on predicting the rating for cooking time under 50 minbutes and above 50 minutes, the model is unfair. 
+Significance level: 0.05
+p-value: 
