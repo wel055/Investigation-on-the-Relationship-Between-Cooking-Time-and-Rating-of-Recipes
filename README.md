@@ -134,4 +134,10 @@ Our cleaned dataframe ended up with 234429 rows and 20 columns. Here are the fir
 
 
 ### Univariate Analysis
+#### Problem Identification 
+Prediction problem:  Predict the rating of recipes using multiclass classification.
+Response variable: Rating. When people choose recipes, they usually select based on ratings because it's the easiest way to visualize. 
+Metrics: accuracy because accuracy consideres all errors equally, in this study, false positive and false negative contributes equally to the prediction.
+Features: number of ingredients, minutes were quantitative values used in this study. Recipes with more ingredients may contribute to better taste and taking less time to cook save time in cooking which should result in high rating 
+
 
