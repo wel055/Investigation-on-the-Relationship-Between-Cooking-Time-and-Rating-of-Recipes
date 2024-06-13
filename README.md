@@ -132,8 +132,33 @@ Our cleaned dataframe ended up with 234429 rows and 20 columns. Here are the fir
 | 2000 meatloaf                        | 475785 |        90 | 2012-03-06 00:00:00 |        5 |              5.0 |           90.0 | True         |
 
 
-
 ### Univariate Analysis
+
+For this analysis, we examined the distribution of the average ratings and average preparation time for recipes. 
+As the plot below shows Distribution of Average Rating, the distribution skewed to the left, indicating that most of the recipes on food.com have a high rating. 
+<iframe
+  src="Figures/Distribution_Average_Rating.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+As the plot below shows Distribution of Average Preperation Time, the distribution is highly concentrated from 0-49,000 minutes, indicating that most of the recipes on food.com have preperation time under 49,000 minutes but there are some outliers.
+<iframe
+  src="Figures/Distribution_Average_time.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+We found out that only 0.75% of recipes on food.com have preperation time over 1,000 minutes. By excluding recipes with an average cooking time greater than 1000 minutes, we aim to focus on a more realistic and representative sample of the data. Outliers can distort the analysis and visualization, so removing them helps in obtaining a clearer and more accurate understanding of the typical cooking times. Based on the figure below of Distribution of Average Preperation Time of preperation time < 1000 minutes, the distribution skewed to the right, indicating most of the recipes on food.com have a faster preperation time (0-49 minutes).
+<iframe
+  src="Figures/Distribution_Average_time<1000.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
 #### Problem Identification 
 Prediction problem:  Predict the rating of recipes using multiclass classification.
 
