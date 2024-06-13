@@ -294,3 +294,9 @@ Alternative hypothesisis the model performs significantly different on predictin
 Significance levelis 0.05
 test statistic is the absolute difference as were interested where the model is fair.
 p-value is 0.00 which is smaller than 0.05 support the alternative hypothesis that the model performs unfair between predicting the rating for cooking time above cooking time minutes' median value minutes and the rating for cooking time below cooking time minutes' median value minutes 
+<iframe
+  src="Figures/Fairness.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
