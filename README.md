@@ -181,7 +181,7 @@ Based on our previous findings, we reexamined the average preparation time vs th
 
 ### Interesting Aggregates
 
-For this section, we investigated the relationship between the preparation time in minutes and number of ingredients of the recipes. First, we created a small dataframe, `'filter_df'` to store the preparation time in minutes without outliers. We identified the outliers using the IQR method. After grouping the cooking time and proportion of sugar in a pivot table shown below, we created a data visualization to understand it better.
+For this section, we investigated the relationship between the preparation time in minutes and number of ingredients of the recipes. First, we created a small dataframe, `'filter_df'` to store the preparation time in minutes without outliers. We identified the outliers using the IQR method. Then, we made pivot table on columns of `n_ingredients` and `minutes`.
 |   minutes |         1 |         2 |       3 |         4 |         5 |         6 |         7 |         8 |         9 |        10 |        11 |        12 |        13 |    14 |        15 |   16 |   17 |      18 |   19 |   20 |        21 |   22 |   23 |   24 |    25 |   26 |   27 |   28 |   29 |   30 |   31 |   32 |   33 |
 |----------:|----------:|----------:|--------:|----------:|----------:|----------:|----------:|----------:|----------:|----------:|----------:|----------:|----------:|------:|----------:|-----:|-----:|--------:|-----:|-----:|----------:|-----:|-----:|-----:|------:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|
 |         0 | nan       | nan       | 5       | nan       | nan       | nan       | nan       | nan       | nan       | nan       | nan       | nan       | nan       | nan   | nan       |  nan |  nan | nan     |  nan |  nan | nan       |  nan |  nan |  nan | nan   |  nan |  nan |  nan |  nan |  nan |  nan |  nan |  nan |
@@ -195,7 +195,7 @@ For this section, we investigated the relationship between the preparation time 
 |         8 | nan       |   4.34783 | 4.21978 |   4.55645 |   4.5523  |   4.37989 |   4.52055 |   4.5119  |   4.08182 |   4.17143 |   4.74    |   4.25    | nan       |   4   |   3       |  nan |  nan | nan     |  nan |  nan | nan       |  nan |  nan |  nan | nan   |  nan |  nan |  nan |  nan |  nan |  nan |  nan |  nan |
 |         9 |   5       | nan       | 4.66667 |   4.51111 |   4.74648 |   4.28125 |   4.5     |   4.57143 |   4.61905 |   4       |   4.18182 |   4.5     |   5       | nan   |   4.81818 |    5 |  nan | nan     |    3 |  nan | nan       |  nan |  nan |  nan | nan   |  nan |  nan |  nan |  nan |  nan |  nan |  nan |  nan |
 
-From the table we saw that there are less recipes with a lot of ingredients for recipes that take shorter time to prepare (<5 minutes).
+From the table we saw that there are less recipes with a lot of ingredients for recipes that take shorter time to prepare (<10 minutes).
 
 ## Assessment of Missingness
 
