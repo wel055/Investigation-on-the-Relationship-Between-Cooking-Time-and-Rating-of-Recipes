@@ -227,7 +227,7 @@ The reason we chose to run a permutation test is because we do not have any info
 
 To run the test, we first split the data points into two groups, recipes with >50 min preperation time vs recipes with <50 min preperation time. The **observed statistic** is **-0.14146823551430732**.
 
-Then we shuffled the ratings for 500 times to collect 500 simulating mean differences in the two distributions as described in the test statistic. We got a **p-value** of **0.004**.
+Then we shuffled the ratings for 500 times to collect 500 simulating mean differences in the two distributions as described in the test statistic. We got a **p-value** of **0.000**.
 
 <iframe
   src="Figures/HypothesisTest.html"
@@ -238,7 +238,7 @@ Then we shuffled the ratings for 500 times to collect 500 simulating mean differ
 
 #### Conclusion of Permutation Test
 
-Since the **p-value** that we found **(0.004)** is less than the significance level of 0.05, we **reject the null hypothesis**. People do not rate all the recipes on the same scale, and they tend to rate recipes with > 50 minutes preparation time lower. One plausible explanation is people might be less preferable for recipes that are tedious and take long to prepare.
+Since the **p-value** that we found **(0.000)** is less than the significance level of 0.05, we **reject the null hypothesis**. People do not rate all the recipes on the same scale, and they tend to rate recipes with > 50 minutes preparation time lower. One plausible explanation is people might be less preferable for recipes that are tedious and take long to prepare.
 
 ## Problem Identification 
 Prediction problem: Predict the rating of recipes using a RandomForest classifier for multiclass classification, as it handles ordinal classifications.
