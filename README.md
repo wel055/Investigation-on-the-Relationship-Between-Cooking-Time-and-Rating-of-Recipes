@@ -179,6 +179,19 @@ Based on our previous findings, we reexamined the average preparation time vs th
   frameborder="0"
 ></iframe>
 
+### Interesting Aggregates
+
+For this section, we investigated the relationship between the preparation time in minutes and number of ingredients of the recipes. First, we created a small dataframe, `'filter_df'` to store the preparation time in minutes without outliers. We identified the outliers using the IQR method. After grouping the cooking time and proportion of sugar in a pivot table shown below, we created a data visualization to understand it better.
+|   1 |         2 |       3 |         4 |         5 |         6 |         7 |         8 |         9 |        10 |       11 |        12 |        13 |   14 |    15 |   16 |   17 |      18 |   19 |   20 |        21 |   22 |   23 |   24 |    25 |   26 |   27 |   28 |   29 |   30 |   31 |   32 |   33 |
+|----:|----------:|--------:|----------:|----------:|----------:|----------:|----------:|----------:|----------:|---------:|----------:|----------:|-----:|------:|-----:|-----:|--------:|-----:|-----:|----------:|-----:|-----:|-----:|------:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|
+| nan | nan       | 5       | nan       | nan       | nan       | nan       | nan       | nan       | nan       | nan      | nan       | nan       |  nan | nan   |  nan |  nan | nan     |  nan |  nan | nan       |  nan |  nan |  nan | nan   |  nan |  nan |  nan |  nan |  nan |  nan |  nan |  nan |
+|   5 |   4.56618 | 4.65    |   4.36181 |   4.70755 |   4.83333 |   4.76667 |   4.63636 |   3.8     |   4.77778 | nan      |   2.75    | nan       |    5 | nan   |  nan |    5 | nan     |  nan |  nan | nan       |  nan |  nan |  nan | nan   |  nan |  nan |  nan |  nan |  nan |  nan |  nan |  nan |
+| nan |   4.6383  | 4.65202 |   4.64157 |   4.62292 |   4.68661 |   4.55238 |   4.59459 |   4.45    |   4.41176 |   4.5625 |   4.5     |   5       |    5 |   4.5 |  nan |    4 | nan     |    5 |  nan |   4.90909 |  nan |  nan |  nan |   4.5 |  nan |  nan |  nan |  nan |  nan |  nan |  nan |  nan |
+| nan |   4.31522 | 4.51822 |   4.6642  |   4.59091 |   4.26821 |   4.45714 |   4.18421 |   4.53571 |   4.45455 |   4      |   2.57143 |   3.33333 |  nan | nan   |    5 |  nan | nan     |  nan |  nan | nan       |  nan |  nan |  nan | nan   |  nan |  nan |  nan |  nan |  nan |  nan |  nan |  nan |
+| nan |   4.71795 | 4.45963 |   4.28462 |   4.5544  |   4.488   |   3.84783 |   3.7027  |   3.675   |   4.125   |   5      | nan       | nan       |  nan | nan   |  nan |  nan |   4.375 |  nan |  nan | nan       |  nan |  nan |  nan | nan   |  nan |  nan |  nan |  nan |  nan |  nan |  nan |  nan |
+
+From the table we saw that there are less recipes with long preparation times and a lot of ingredients.
+
 ## Assessment of Missingness
 
 `'date'`, `'rating'`, and `'review'`, in the merged dataset have a significant amount of missing values, so we decided to assess the missingness on the dataframe.
