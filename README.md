@@ -278,18 +278,19 @@ The model used is a RandomForest classification to predict the rating based on t
 ## Final Model
 The new features used for the final model are 'name', 'nutrition', and 'minutes', which provided more detailed information on recipes. The feature 'name' offered important descriptions of the recipes being made, recognizing that people with different tastes will choose and rate recipes differently. The 'nutrition' feature contributes to the rating since the healthiness of a recipe, such as its calorie content, often influences its appeal. The 'minutes' feature indicates how easy the recipe is to make. If it takes less time, it is deemed easier and may be rated higher by individuals who prefer easy cooking.
 
-These features improved the model because they provide critical information relating to the rating of the recipes. People rating recipes often base their decisions on their tastes; for instance, cakes may receive higher ratings than vegetables from those who prefer sweets. If the recipe is very healthy with low calories, it can receive a higher rating as well. Additionally, if the recipe is easier to make and tastes good, it may result in an even higher rating.
+These features likely improved the model because they provide critical information relating to the rating of the recipes. People rating recipes often base their decisions on their tastes; for instance, cakes may receive higher ratings than vegetables from those who prefer sweets. If the recipe is very healthy with low calories, it can receive a higher rating as well. Additionally, if the recipe is easier to make and tastes good, it may result in an even higher rating.
 
 The modeling algorithm used is a random forest classifier, with one-hot encoded categorical features to examine whether the presence of particular 'name' and 'nutrition' attributes significantly contributes to the model's accuracy.
 
 The hyperparameters perform best with a max depth of 10, a minimum sample leaf of 1, and a minimum sample split of 2. These hyperparameters were optimized using GridSearchCV to search for the optimal tree depth over 10, minimum sample splits over 3, and minimum sample leaves over 3, in order to fine-tune the model.
 
-The model's accuracy increased to 0.7253 compared to 0.7249, indicating that the model's accuracy increased slightly, corresponding to better model performance.
+The model's accuracy increased from 0.7249 to 0.7253, indicating that the model's accuracy increased slightly, corresponding to likely better model performance.
 
 ## Fairness Analysis 
 Group X is the cooking minutes under median cooking minutes.
 Group Y is the cooking minutes above median cooking minutes. 
-Evaluation metrics is the model percision.
+Evaluation metrics is the model percision.  
+
 **Null Hypothesis:** Model performs the same on predicting the rating for cooking time under feature cooking 'minutes' median minutes and above feature cooking minutes', the model is **fair**. 
 
 **Alternative Hypothesis:** Model performs significantly different on predicting the rating for cooking time under feature cooking minutes' median minutes and above feature cooking 'minutes' median minutes , the model is **unfair**. 
@@ -306,4 +307,4 @@ Evaluation metrics is the model percision.
 ></iframe>
 
 #### Conclusion of Fairness Analysis
-Our result p-value is 0.00 which is smaller than 0.05, we reject the null hypothesis that our model is fair. The model is unfair and performs differently between predicting the rating for recipes with cooking time above time median value and recipes with cooking time below time median value.  
+Our result p-value is 0.00 which is smaller than 0.05, we reject the null hypothesis that our model is fair. The model is likely unfair and performs differently between predicting the rating for recipes with cooking time above time median value and recipes with cooking time below time median value.  
