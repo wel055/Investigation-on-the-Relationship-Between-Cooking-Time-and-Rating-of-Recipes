@@ -173,7 +173,7 @@ For this analysis, we examined the average preparation time vs the rating of the
 Based on our previous findings, we reexamined the average preparation time vs the rating of the recipe for only recipes with preperation time <1000 minutes. The graph below shows that recipes which take less time to prepare have more higher ratings (rating of 4 or 5).
 
 <iframe
-  src="Figures/Average_Preperation_Time_vs_Average_Rating.html"
+  src="Figures/Average_Preperation_Time_within1000_vs_Average_Rating.html"
   width="800"
   height="600"
   frameborder="0"
@@ -225,7 +225,7 @@ To investigate the question, we ran a **permutation test** with the following hy
 
 The reason we chose to run a permutation test is because we do not have any information of any population, and we want to check if the two distributions look like they come from the same population. We proposed that **People rate recipes with >50 min preperation time lower** because people might be less preferable for recipes that are tedious and take long to prepare. For the test statistic, we chose the difference in mean of the ratings of two groups of recipes instead of absolute difference in mean. This is because we have a directional hypothesis, which is that people rate >50 minutes preparation recipes lower than other recipes. By looking at the difference in mean between the two groups, we can see what type of recipes typically have a higher rating, which answers our question.
 
-To run the test, we first split the data points into two groups, recipes with >50 min preperation time vs recipes with <50 min preperation time. The **observed statistic** is **0.14146823551430732**.
+To run the test, we first split the data points into two groups, recipes with >50 min preperation time vs recipes with <50 min preperation time. The **observed statistic** is **-0.14146823551430732**.
 
 Then we shuffled the ratings for 500 times to collect 500 simulating mean differences in the two distributions as described in the test statistic. We got a **p-value** of **0.004**.
 
