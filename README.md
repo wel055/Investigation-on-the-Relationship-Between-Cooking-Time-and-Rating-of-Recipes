@@ -196,14 +196,14 @@ Since we wish to investigate the relationship between recipe preparation time an
 
 **Alternate Hypothesis:** The missingness of ratings depend on the preparation time of the recipe.
 
-**Test Statistic:** The difference of mean in preperation time of the recipe in minutes of the distribution of the group without missing ratings and the distribution of the group without missing ratings.
+**Test Statistic:** The absolute difference of mean in preperation time of the recipe in minutes of the distribution of the group without missing ratings and the distribution of the group without missing ratings.
 
 **Significance Level:** 0.05
 
 We ran permutation test by shuffling the missingness of rating for 1000 times to collect 1000 simulating mean differences in the two distributions as described in the test statistic.
 
 <iframe
-  src="Figures/Rating_Missingness_on_preperation_time.html"
+  src="Figures/Missingness.html"
   width="800"
   height="600"
   frameborder="0"
@@ -227,7 +227,7 @@ The reason we chose to run a permutation test is because we do not have any info
 
 To run the test, we first split the data points into two groups, recipes with >50 min preperation time vs recipes with <50 min preperation time. The **observed statistic** is **0.14146823551430732**.
 
-Then we shuffled the ratings for 1000 times to collect 1000 simulating mean differences in the two distributions as described in the test statistic. We got a **p-value** of **0.004**.
+Then we shuffled the ratings for 500 times to collect 500 simulating mean differences in the two distributions as described in the test statistic. We got a **p-value** of **0.004**.
 
 <iframe
   src="Figures/HypothesisTest.html"
