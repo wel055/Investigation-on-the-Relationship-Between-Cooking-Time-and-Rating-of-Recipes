@@ -266,30 +266,31 @@ Then we shuffled the ratings for 500 times to collect 500 simulating mean differ
 Since the **p-value** that we found **(0.000)** is less than the significance level of 0.05, we **reject the null hypothesis**. People do not rate all the recipes on the same scale, and they tend to rate recipes with > 50 minutes preparation time lower. One plausible explanation is people might be less preferable for recipes that are tedious and take long to prepare.
 
 ## Problem Identification 
-Prediction problem: Predict the rating of recipes using a RandomForest classifier for multiclass classification, as it handles ordinal classifications.
-
-Response variable: Rating. People often choose recipes based on ratings, as they offer a straightforward method for assessing quality.
-
-Metrics: Accuracy, because it treats all errors equally. In this study, both false positives and false negatives have an equal impact on the prediction accuracy.
-
-Features: The number of ingredients and the number of steps are quantitative values used in this study, available before recipe preparation. Recipes with more ingredients might contribute to better taste, while fewer steps indicate ease of preparation. Both factors likely to contributes to higher ratings, as they save time and improve the cooking experience.
+The prediction problem here is to predict the rating of recipes using a RandomForest classifier for multiclass classification, which is well-suited for handling ordinal classifications.
+The response variable is 'rating'. People often choose recipes based on ratings, as they offer a straightforward method for assessing quality, predict rating can help identify which recipe is better. 
+The metric used is accuracy because it treats all errors equally. In this study, both false positives and false negatives have an equal impact on the prediction accuracy, as giving a good rating to a recipe or a bad rating does not pose any significant impact on individuals when choosing recipes.
+Features used include the number of ingredients and the number of steps, which are quantitative values available before recipe preparation. Recipes with more ingredients might contribute to better taste, while fewer steps indicate ease of preparation. Both factors are likely to contribute to higher ratings, as they save time and enhance the cooking experience.
 
 ## Baseline Model 
-The model used is random forrest classfication to predict the rating based on two quantitative features, n_ingredients(number of ingredients used in the recipe) and n_steps(number of steps to perform when making the recipe). 
-The features were used directly without any feature engineering on the two features. The data was splited into two set, the traning set and the test set, and was fit using a random forrest calssifier. The accuracy of our model is 0.72. The model is relatively good because the model had relative high accuracy over the test set. 
+The model used is a random forest classification to predict the rating based on two quantitative features: n_ingredients (number of ingredients used in the recipe) and n_steps (number of steps required to make the recipe). The features were used directly without any feature engineering. The data was split into two sets: the training set and the test set, and was fitted using a random forest classifier. The accuracy of our model is 0.7249. Both accuracy and R² being closer to 1 indicates that the model is relatively good, as it demonstrated relatively high accuracy over the test set.
 
 ## Final Model
-New features: tags, nutrition. They provided more detailed information on recipes. 
-Tags: provided important description such as if the recipe is more suiteble for dinner or lunch, siteble for how many people to eat, how expensive is the food, what ocaasion. These information may contributes to the rating of food as people would usually rate high on food the environment. 
-Nutrition: The rating of the recipies often depends on how healthy the recipie is, so calories may contribues to the rating 
-These features improved the model because they provides critical information relating to the rating of the receipes. People rating receipies often depends on the environemnt and the recipe itself. For example, if the recipe is ocassional, the recipe may receive higher rating. If the recipe is very healthy with low calories, it can recive higher rating as well. 
-The hyperparameters peforms the best with max depth of 10, minium sample leaf of 1,and minimum sample split of 2. 
+The new features used for the final model are 'name', 'nutrition', and 'minutes', which provided more detailed information on recipes. The feature 'name' offered important descriptions of the recipes being made, recognizing that people with different tastes will choose and rate recipes differently. The 'nutrition' feature contributes to the rating since the healthiness of a recipe, such as its calorie content, often influences its appeal. The 'minutes' feature indicates how easy the recipe is to make. If it takes less time, it is deemed easier and may be rated higher by individuals who prefer easy cooking.
+
+These features improved the model because they provide critical information relating to the rating of the recipes. People rating recipes often base their decisions on their tastes; for instance, cakes may receive higher ratings than vegetables from those who prefer sweets. If the recipe is very healthy with low calories, it can receive a higher rating as well. Additionally, if the recipe is easier to make and tastes good, it may result in an even higher rating.
+
+The modeling algorithm used is a random forest classifier, with one-hot encoded categorical features to examine whether the presence of particular 'name' and 'nutrition' attributes significantly contributes to the model's accuracy.
+
+The hyperparameters perform best with a max depth of 10, a minimum sample leaf of 1, and a minimum sample split of 2. These hyperparameters were optimized using GridSearchCV to search for the optimal tree depth over 10, minimum sample splits over 3, and minimum sample leaves over 3, in order to fine-tune the model.
+
+The model's accuracy increased to 0.7253 compared to 0.7249, indicating that the model's accuracy increased slightly, corresponding to better model performance.
 
 ## Fairness Analysis 
-Group X: cooking minutes under its median minutes 
-Group Y: cooking minutes above its median minutes 
-Evaluation metric: percision 
-Null hypothesis: the model performs the same on predicting the rating for cooking time under feature cooking minutes' median minutes and feature cooking minutes', the model is fair. 
-Alternative hypothesis: the model performs significantly different on predicting the rating for cooking time under feature cooking minutes' median minutes  and feature cooking minutes' median minutes , the model is unfair. 
-Significance level: 0.05
-p-value: 1.0 which is greater than 0.05 support the null hypothesis that the model performs the same on predicting the rating for cooking time under 50 minutes and above 50 minutes 
+Group X is the cooking minutes under its median minutes 
+Group Y is the cooking minutes above its median minutes 
+Evaluation metrics is the model percision 
+Null hypothesis is the model performs the same on predicting the rating for cooking time under feature cooking minutes' median minutes and feature cooking minutes', the model is fair. 
+Alternative hypothesisis the model performs significantly different on predicting the rating for cooking time under feature cooking minutes' median minutes  and feature cooking minutes' median minutes , the model is unfair. 
+Significance levelis 0.05
+test statistic is the absolute difference as were interested where the model is fair.
+p-value is 0.00 which is smaller than 0.05 support the alternative hypothesis that the model performs unfair between predicting the rating for cooking time above cooking time minutes' median value minutes and the rating for cooking time below cooking time minutes' median value minutes 
