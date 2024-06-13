@@ -159,6 +159,58 @@ We found out that only 0.75% of recipes on food.com have preperation time over 1
   frameborder="0"
 ></iframe>
 
+### Bivariate Analysis
+
+For this analysis, we examined the average preparation time vs the rating of the recipe for all recipes. The graph below showed most data clustered at <1000 minutes preparation time.
+
+<iframe
+  src="Figures/Average_Preperation_Time_vs_Average_Rating.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+Based on our previous findings, we reexamined the average preparation time vs the rating of the recipe for only recipes with preperation time <1000 minutes. The graph below shows that recipes which take less time to prepare have more higher ratings (rating of 4 or 5).
+
+<iframe
+  src="Figures/Average_Preperation_Time_vs_Average_Rating.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+## Assessment of Missingness
+
+`'date'`, `'rating'`, and `'review'`, in the merged dataset have a significant amount of missing values, so we decided to assess the missingness on the dataframe.
+
+### NMAR Analysis
+
+We hypothesize that the missingness in the `review` column is Not Missing At Random (NMAR). This assumption is based on the idea that individuals who feel indifferent about a recipe are less likely to leave a review, as they may not feel compelled to share their experiences. Typically, people are motivated to leave a review only if they have strong feelings about the recipe, whether positive or negative. Their emotions drive them to invest the time and effort needed to navigate to the review page, click multiple buttons, and compose a thoughtful review. For instance, individuals who enjoyed the recipe are more likely to go through the process of leaving a positive review.
+
+
+### Missingness Dependency
+Since we wish to investigate the relationship between recipe preparation time and recipe rating, we tested whether the missingness of depend on the preparation time of the recipe.
+> Minutes and Rating
+
+**Null Hypothesis:** The missingness of ratings does not depend on the preparation time of the recipe.
+
+**Alternate Hypothesis:** The missingness of ratings depend on the preparation time of the recipe.
+
+**Test Statistic:** The difference of mean in preperation time of the recipe in minutes of the distribution of the group without missing ratings and the distribution of the group without missing ratings.
+
+**Significance Level:** 0.05
+
+We ran permutation test by shuffling the missingness of rating for 1000 times to collect 1000 simulating mean differences in the two distributions as described in the test statistic.
+
+<iframe
+  src="Figures/Rating_Missingness_on_preperation_time.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+The **observed statistic** of **51.4524** is indicated by the red dashed line. The **p-value** that we found **(0.126)** is > 0.05 which is the significance level that we set, we **fail to reject the null hypothesis**. The missingness of rating does not depend on the cooking time in minutes of the recipe.
+
 #### Problem Identification 
 Prediction problem:  Predict the rating of recipes using multiclass classification.
 
