@@ -170,7 +170,7 @@ For this analysis, we examined the average preparation time vs the rating of the
   frameborder="0"
 ></iframe>
 
-Based on our previous findings, we reexamined the average preparation time vs the rating of the recipe for only recipes with preperation time <1000 minutes. The graph below shows that recipes which take less time to prepare have more higher ratings (rating of 4 or 5).
+Based on our previous findings, we re-examined the average preparation time vs the rating of the recipe for only recipes with preperation time <1000 minutes. The graph below shows that recipes which take less time to prepare have more higher ratings (rating of 4 or 5).
 
 <iframe
   src="Figures/Average_Preperation_Time_within1000_vs_Average_Rating.html"
@@ -287,17 +287,23 @@ The hyperparameters perform best with a max depth of 10, a minimum sample leaf o
 The model's accuracy increased to 0.7253 compared to 0.7249, indicating that the model's accuracy increased slightly, corresponding to better model performance.
 
 ## Fairness Analysis 
-Group X is the cooking minutes under its median minutes.
-Group Y is the cooking minutes above its median minutes. 
+Group X is the cooking minutes under median cooking minutes.
+Group Y is the cooking minutes above median cooking minutes. 
 Evaluation metrics is the model percision.
-Null hypothesis is the model performs the same on predicting the rating for cooking time under feature cooking 'minutes' median minutes and above feature cooking minutes', the model is fair. 
-Alternative hypothesisis the model performs significantly different on predicting the rating for cooking time under feature cooking minutes' median minutes and above feature cooking 'minutes' median minutes , the model is unfair. 
-Significance levelis 0.05
-test statistic is the absolute difference as were interested where the model is fair.
-p-value is 0.00 which is smaller than 0.05 support the alternative hypothesis that the model performs unfair between predicting the rating for cooking time above cooking time minutes' median value minutes and the rating for cooking time below cooking time minutes' median value minutes 
+**Null Hypothesis:** Model performs the same on predicting the rating for cooking time under feature cooking 'minutes' median minutes and above feature cooking minutes', the model is **fair**. 
+
+**Alternative Hypothesis:** Model performs significantly different on predicting the rating for cooking time under feature cooking minutes' median minutes and above feature cooking 'minutes' median minutes , the model is **unfair**. 
+
+**Test Statistic:** Absolute Difference in precision (above median - under median).  
+
+**Significance level:** 0.05  
+
 <iframe
   src="Figures/Fairness.html"
   width="800"
   height="600"
   frameborder="0"
 ></iframe>
+
+#### Conclusion of Fairness Analysis
+Our result p-value is 0.00 which is smaller than 0.05, we reject the null hypothesis that our model is fair. The model is unfair and performs differently between predicting the rating for recipes with cooking time above time median value and recipes with cooking time below time median value.  
