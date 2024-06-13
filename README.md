@@ -211,7 +211,36 @@ We ran permutation test by shuffling the missingness of rating for 1000 times to
 
 The **observed statistic** of **51.4524** is indicated by the red dashed line. The **p-value** that we found **(0.126)** is > 0.05 which is the significance level that we set, we **fail to reject the null hypothesis**. The missingness of rating does not depend on the cooking time in minutes of the recipe.
 
-#### Problem Identification 
+## Hypothesis Testing
+We are interested in about whether people rate recipes with >50 minutes preparation time and <50 minutes preparation time on the same scale. 
+To investigate the question, we ran a **permutation test** with the following hypotheses, test statistic, and significance level.
+
+**Null Hypothesis:** People rate all the recipes on the same scale.
+
+**Alternative Hypothesis:** People rate recipes with >50 min preperation time lower than recipes with <50 min preperation time.
+
+**Test Statistic:** The difference in mean between rating of recipes with >50 min preperation time and recipes with <50 min preparation time.
+
+**Significance Level:** 0.05
+
+The reason we chose to run a permutation test is because we do not have any information of any population, and we want to check if the two distributions look like they come from the same population. We proposed that **People rate recipes with >50 min preperation time lower** because people might be less preferable for recipes that are tedious and take long to prepare. For the test statistic, we chose the difference in mean of the ratings of two groups of recipes instead of absolute difference in mean. This is because we have a directional hypothesis, which is that people rate >50 minutes preparation recipes lower than other recipes. By looking at the difference in mean between the two groups, we can see what type of recipes typically have a higher rating, which answers our question.
+
+To run the test, we first split the data points into two groups, recipes with >50 min preperation time vs recipes with <50 min preperation time. The **observed statistic** is **0.14146823551430732**.
+
+Then we shuffled the ratings for 1000 times to collect 1000 simulating mean differences in the two distributions as described in the test statistic. We got a **p-value** of **0.004**.
+
+<iframe
+  src="Figures/HypothesisTest.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+#### Conclusion of Permutation Test
+
+Since the **p-value** that we found **(0.004)** is less than the significance level of 0.05, we **reject the null hypothesis**. People do not rate all the recipes on the same scale, and they tend to rate recipes with > 50 minutes preparation time lower. One plausible explanation is people might be less preferable for recipes that are tedious and take long to prepare.
+
+## Problem Identification 
 Prediction problem:  Predict the rating of recipes using multiclass classification.
 
 Response variable: Rating. When people choose recipes, they usually select based on ratings because it's the easiest way to visualize. 
@@ -220,18 +249,18 @@ Metrics: accuracy because accuracy consideres all errors equally, in this study,
 
 Features: number of ingredients, minutes were quantitative values used in this study. Recipes with more ingredients may contribute to better taste and taking less time to cook save time in cooking which should result in high rating 
 
-#### Baseline Model 
+## Baseline Model 
 The model used is random forrest classfication. Two quantitative features are used, n_ingredients and minutes. 
 The features were used directly without any feature engineering on the two features. The data was splited into two set, the traning set and the test set, and was fit using a random forrest calssifier. The accuracy of our model is 0.72. The model is relatively good because the model had relative high accuracy over the test set. 
 
-#### Final Model
+## Final Model
 New features: tags and nutrition. They provided more detailed information on recipes. 
 Tags: provided important description such as if the recipe is more suiteble for dinner or lunch, siteble for how many people to eat, how expensive is the food, what ocaasion. These information may contributes to the rating of food as people would usually rate high on food the environment. 
 Nutrition: The rating of the recipies often depends on how healthy the recipie is, so calories may contribues to the rating 
 These features improved the model because they provides critical information relating to the rating of the receipes. People rating receipies often depends on the environemnt and the recipe itself. For example, if the recipe is ocassional, the recipe may receive higher rating. If the recipe is very healthy with low calories, it can recive higher rating as well. 
 The hyperparameters peforms the best with max depth of 10, minium sample leaf of 1,and minimum sample split of 2. 
 
-#### Fairness Analysis 
+## Fairness Analysis 
 Group X: cooking minutes under 50 minutes 
 Group Y: cooking minutes above 50 minutes 
 Evaluation metric: percision 
