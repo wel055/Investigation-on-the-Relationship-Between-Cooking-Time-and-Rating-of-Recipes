@@ -290,8 +290,8 @@ The model's accuracy increased to 0.7253 compared to 0.7249, indicating that the
 Group X is the cooking minutes under its median minutes.
 Group Y is the cooking minutes above its median minutes. 
 Evaluation metrics is the model percision.
-Null hypothesis is the model performs the same on predicting the rating for cooking time under feature cooking 'minutes' median minutes and feature cooking minutes', the model is fair. 
-Alternative hypothesisis the model performs significantly different on predicting the rating for cooking time under feature cooking minutes' median minutes  and feature cooking 'minutes' median minutes , the model is unfair. 
+Null hypothesis is the model performs the same on predicting the rating for cooking time under feature cooking 'minutes' median minutes and above feature cooking minutes', the model is fair. 
+Alternative hypothesisis the model performs significantly different on predicting the rating for cooking time under feature cooking minutes' median minutes and above feature cooking 'minutes' median minutes , the model is unfair. 
 Significance levelis 0.05
 test statistic is the absolute difference as were interested where the model is fair.
 p-value is 0.00 which is smaller than 0.05 support the alternative hypothesis that the model performs unfair between predicting the rating for cooking time above cooking time minutes' median value minutes and the rating for cooking time below cooking time minutes' median value minutes 
