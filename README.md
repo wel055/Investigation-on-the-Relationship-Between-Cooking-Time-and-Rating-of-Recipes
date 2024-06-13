@@ -267,4 +267,4 @@ Evaluation metric: percision
 Null hypothesis: the model performs the same on predicting the rating for cooking time under 50 minutes and above 50 minutes, the model is fair. 
 Alternative hypothesis: the model performs significantly different on predicting the rating for cooking time under 50 minbutes and above 50 minutes, the model is unfair. 
 Significance level: 0.05
-p-value: 
+p-value: 1.0 which is greater than 0.05 support the null hypothesis that the model performs the same on predicting the rating for cooking time under 50 minutes and above 50 minutes 
