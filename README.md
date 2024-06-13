@@ -241,30 +241,30 @@ Then we shuffled the ratings for 500 times to collect 500 simulating mean differ
 Since the **p-value** that we found **(0.004)** is less than the significance level of 0.05, we **reject the null hypothesis**. People do not rate all the recipes on the same scale, and they tend to rate recipes with > 50 minutes preparation time lower. One plausible explanation is people might be less preferable for recipes that are tedious and take long to prepare.
 
 ## Problem Identification 
-Prediction problem:  Predict the rating of recipes using multiclass classification.
+Prediction problem: Predict the rating of recipes using a RandomForest classifier for multiclass classification, as it handles ordinal classifications.
 
-Response variable: Rating. When people choose recipes, they usually select based on ratings because it's the easiest way to visualize. 
+Response variable: Rating. People often choose recipes based on ratings, as they offer a straightforward method for assessing quality.
 
-Metrics: accuracy because accuracy consideres all errors equally, in this study, false positive and false negative contributes equally to the prediction.
+Metrics: Accuracy, because it treats all errors equally. In this study, both false positives and false negatives have an equal impact on the prediction accuracy.
 
-Features: number of ingredients, minutes were quantitative values used in this study. Recipes with more ingredients may contribute to better taste and taking less time to cook save time in cooking which should result in high rating 
+Features: The number of ingredients and the number of steps are quantitative values used in this study, available before recipe preparation. Recipes with more ingredients might contribute to better taste, while fewer steps indicate ease of preparation. Both factors likely to contributes to higher ratings, as they save time and improve the cooking experience.
 
 ## Baseline Model 
-The model used is random forrest classfication. Two quantitative features are used, n_ingredients and minutes. 
+The model used is random forrest classfication to predict the rating based on two quantitative features, n_ingredients(number of ingredients used in the recipe) and n_steps(number of steps to perform when making the recipe). 
 The features were used directly without any feature engineering on the two features. The data was splited into two set, the traning set and the test set, and was fit using a random forrest calssifier. The accuracy of our model is 0.72. The model is relatively good because the model had relative high accuracy over the test set. 
 
 ## Final Model
-New features: tags and nutrition. They provided more detailed information on recipes. 
+New features: tags, nutrition. They provided more detailed information on recipes. 
 Tags: provided important description such as if the recipe is more suiteble for dinner or lunch, siteble for how many people to eat, how expensive is the food, what ocaasion. These information may contributes to the rating of food as people would usually rate high on food the environment. 
 Nutrition: The rating of the recipies often depends on how healthy the recipie is, so calories may contribues to the rating 
 These features improved the model because they provides critical information relating to the rating of the receipes. People rating receipies often depends on the environemnt and the recipe itself. For example, if the recipe is ocassional, the recipe may receive higher rating. If the recipe is very healthy with low calories, it can recive higher rating as well. 
 The hyperparameters peforms the best with max depth of 10, minium sample leaf of 1,and minimum sample split of 2. 
 
 ## Fairness Analysis 
-Group X: cooking minutes under 50 minutes 
-Group Y: cooking minutes above 50 minutes 
+Group X: cooking minutes under its median minutes 
+Group Y: cooking minutes above its median minutes 
 Evaluation metric: percision 
-Null hypothesis: the model performs the same on predicting the rating for cooking time under 50 minutes and above 50 minutes, the model is fair. 
-Alternative hypothesis: the model performs significantly different on predicting the rating for cooking time under 50 minbutes and above 50 minutes, the model is unfair. 
+Null hypothesis: the model performs the same on predicting the rating for cooking time under feature cooking minutes' median minutes and feature cooking minutes', the model is fair. 
+Alternative hypothesis: the model performs significantly different on predicting the rating for cooking time under feature cooking minutes' median minutes  and feature cooking minutes' median minutes , the model is unfair. 
 Significance level: 0.05
 p-value: 1.0 which is greater than 0.05 support the null hypothesis that the model performs the same on predicting the rating for cooking time under 50 minutes and above 50 minutes 
